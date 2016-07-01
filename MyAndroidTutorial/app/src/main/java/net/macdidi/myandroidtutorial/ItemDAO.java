@@ -202,21 +202,21 @@ public class ItemDAO {
         Item item3 = new Item(0, new Date().getTime(), Colors.GREEN, "一首非常好聽的音樂！", "Hello content", "", "", 0, 0, 0,30,0);
         Item item4 = new Item(0, new Date().getTime(), Colors.ORANGE, "儲存在資料庫的資料", "Hello content", "", "", 0, 0, 0,40,0);
         Item item5 = new Item(0, new Date().getTime(), Colors.LIGHTGREY, "鉛筆", "鉛筆一隻", "", "", 0, 0, 0,50,4);
-        Item item6 = new Item(0, new Date().getTime(), Colors.LIGHTGREY, "畫筆", "畫筆一組", "", "", 0, 0, 0,500,4);
+        Item item6 = new Item(0, new Date().getTime(), Colors.ORANGE, "畫筆", "畫筆一組", "", "", 0, 0, 0,500,4);
         Item item7 = new Item(0, new Date().getTime(), Colors.LIGHTGREY, "鋼筆", "萬寶龍鋼筆", "", "", 0, 0, 0,50000,4);
-        Item item8 = new Item(0, new Date().getTime(), Colors.LIGHTGREY, "毛筆", "大楷小楷毛筆", "", "", 0, 0, 0,700,4);
+        Item item8 = new Item(0, new Date().getTime(), Colors.RED, "毛筆", "大楷小楷毛筆", "", "", 0, 0, 0,700,4);
         Item item9 = new Item(0, new Date().getTime(), Colors.LIGHTGREY, "彩色筆", "彩色筆一盒", "", "", 0, 0, 0,300,4);
-        Item item10 = new Item(0, new Date().getTime(), Colors.LIGHTGREY, "襯衫", "ZARA白色襯衫", "", "", 0, 0, 0,1000,0);
+        Item item10 = new Item(0, new Date().getTime(), Colors.BLUE, "襯衫", "ZARA白色襯衫", "", "", 0, 0, 0,1000,0);
         Item item11 = new Item(0, new Date().getTime(), Colors.LIGHTGREY, "牛仔褲", "uniqlo淡藍色牛仔褲", "", "", 0, 0, 0,1500,0);
-        Item item12 = new Item(0, new Date().getTime(), Colors.LIGHTGREY, "外套", "gap 灰色外套", "", "", 0, 0, 0,3500,0);
+        Item item12 = new Item(0, new Date().getTime(), Colors.RED, "外套", "gap 灰色外套", "", "", 0, 0, 0,3500,0);
         Item item13 = new Item(0, new Date().getTime(), Colors.LIGHTGREY, "風衣", "PRADA米色風衣", "", "", 0, 0, 0,50000,0);
-        Item item14 = new Item(0, new Date().getTime(), Colors.LIGHTGREY, "西裝外套", "H&M 西裝外套 ", "", "", 0, 0, 0,4500,0);
+        Item item14 = new Item(0, new Date().getTime(), Colors.BLUE, "西裝外套", "H&M 西裝外套 ", "", "", 0, 0, 0,4500,0);
         Item item15 = new Item(0, new Date().getTime(), Colors.LIGHTGREY, "iMac", " APPLE 27' iMac ", "", "", 0, 0, 0,75000,2);
-        Item item16 = new Item(0, new Date().getTime(), Colors.LIGHTGREY, "iPhone", " iPhone 6s plus ", "", "", 0, 0, 0,31000,2);
-        Item item17 = new Item(0, new Date().getTime(), Colors.LIGHTGREY, "iPod", " iPod 4th ", "", "", 0, 0, 0,5200,2);
-        Item item18 = new Item(0, new Date().getTime(), Colors.LIGHTGREY, "Mac Book", " APPLE 15' MacBookPro  ", "", "", 0, 0, 0,63000,2);
+        Item item16 = new Item(0, new Date().getTime(), Colors.RED, "iPhone", " iPhone 6s plus ", "", "", 0, 0, 0,31000,2);
+        Item item17 = new Item(0, new Date().getTime(), Colors.ORANGE, "iPod", " iPod 4th ", "", "", 0, 0, 0,5200,2);
+        Item item18 = new Item(0, new Date().getTime(), Colors.BLUE, "Mac Book", " APPLE 15' MacBookPro  ", "", "", 0, 0, 0,63000,2);
         Item item19 = new Item(0, new Date().getTime(), Colors.LIGHTGREY, "iPad", " iPad Pro 2 ", "", "", 0, 0, 0,28000,2);
-        Item item20 = new Item(0, new Date().getTime(), Colors.LIGHTGREY, "iPad Pro", " APPLE iPad Pro 12' ", "", "", 0, 0, 0,33000,2);
+        Item item20 = new Item(0, new Date().getTime(), Colors.RED, "iPad Pro", " APPLE iPad Pro 12' ", "", "", 0, 0, 0,33000,2);
 
 
 
