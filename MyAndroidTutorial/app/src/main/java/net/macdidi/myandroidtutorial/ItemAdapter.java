@@ -54,7 +54,7 @@ public class ItemAdapter extends ArrayAdapter<Item> {
         GradientDrawable background = (GradientDrawable)typeColor.getBackground();
         background.setColor(item.getColor().parseColor());
 
-        // 設定標題與日期時間
+        // Main UI show 設定標題與日期時間
         titleView.setText(item.getTitle());
         dateView.setText(item.getLocaleDatetime());
 //        dateView.setText(String.valueOf(item.getCost()));
