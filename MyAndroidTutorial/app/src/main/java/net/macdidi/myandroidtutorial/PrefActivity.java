@@ -11,7 +11,6 @@ public class PrefActivity extends PreferenceActivity {
     // 加入欄位變數宣告
     private SharedPreferences sharedPreferences;
     private Preference defaultColor;
-    private Preference defaulDevice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,7 +18,6 @@ public class PrefActivity extends PreferenceActivity {
         addPreferencesFromResource(R.xml.mypreference);
         // 讀取顏色設定元件
         defaultColor = (Preference)findPreference("DEFAULT_COLOR");
-        defaulDevice = (Preference)findPreference("DEFAULT_DEVICE");
         // 建立SharedPreferences物件
         sharedPreferences =
                 PreferenceManager.getDefaultSharedPreferences(this);

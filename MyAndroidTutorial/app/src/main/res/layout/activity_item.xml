@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+
+<!-- 使用ScrollView為最外層的元件 -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:stretchColumns="1"
-    tools:context="net.macdidi.myandroidtutorial.ItemActivity">
+    android:layout_height="match_parent">
+
+    <!-- 刪除xmlns:android的設定 -->
+    <TableLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:stretchColumns="1"
+        tools:context="net.macdidi.myandroidtutorial.ItemActivity">
 
     <TableRow>
 
@@ -98,6 +105,17 @@
             android:background="@drawable/rectangle_drawable" />
     </TableRow>
 
+        <!-- 顯示圖片 -->
+        <ImageView
+            android:id="@+id/picture"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rectangle_drawable"
+            android:padding="6sp"
+            android:layout_margin="2sp"
+            android:scaleType="center"
+            android:visibility="invisible" />
+
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -157,4 +175,6 @@
         </TableRow>
     </TableLayout>
 
-</TableLayout>
+ </TableLayout>
+    <!-- ScrollView的結束標籤 -->
+</ScrollView>
