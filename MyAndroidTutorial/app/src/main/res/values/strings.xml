@@ -48,4 +48,5 @@
     <string name="record_play">播放</string>
     <string name="record_new">重新錄製</string>
     <string name="record_audio_denied">沒有錄音設備授權</string>
+    <string name="title_activity_maps">Map</string>
 </resources>

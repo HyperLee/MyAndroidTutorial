@@ -5,11 +5,17 @@
     <!-- 需要攝錄鏡頭設備 -->
     <uses-feature android:name="android.hardware.camera" />
     <!-- 寫入外部儲存設備 -->
-    <uses-permission android:name=
-        "android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <!-- 使用錄音設備 -->
-    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality. 
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -32,7 +38,8 @@
             android:theme="@android:style/Theme.Dialog" />
 
         <!-- 記事項目元件 -->
-        <activity android:name=".ItemActivity"
+        <activity
+            android:name=".ItemActivity"
             android:label="@string/ItemActivity_name">
             <intent-filter>
 
@@ -61,8 +68,9 @@
         <!-- 設定元件 -->
         <activity android:name=".PrefActivity" />
 
-        <!--Device Information -->
-        <activity android:name=".DeviceinfoActivity"
+        <!-- Device Information -->
+        <activity
+            android:name=".DeviceinfoActivity"
             android:label="@string/DeviceinfoActivity_name">
             <intent-filter>
                 <action android:name="net.macdidi.myandroidtutorial.CHOOSE_DEVICE" />
@@ -72,14 +80,29 @@
         <!-- 錄音元件 -->
         <activity
             android:name=".RecordActivity"
-            android:theme="@android:style/Theme.Dialog"
-            android:label="@string/title_record"/>
+            android:label="@string/title_record"
+            android:theme="@android:style/Theme.Dialog" />
 
         <!-- 播放元件 -->
         <activity
             android:name=".PlayActivity"
-            android:theme="@android:style/Theme.Dialog"
-            android:label="@string/title_play"/>
+            android:label="@string/title_play"
+            android:theme="@android:style/Theme.Dialog" />
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/. 
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".MapsActivity"
+            android:label="@string/title_activity_maps"></activity>
     </application>
 
 </manifest>

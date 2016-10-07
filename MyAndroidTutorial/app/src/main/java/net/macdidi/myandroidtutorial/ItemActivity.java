@@ -209,6 +209,10 @@ public class ItemActivity extends AppCompatActivity {
                 requestRecordPermission();
                 break;
             case R.id.set_location:
+                // 啟動地圖元件用的Intent物件
+                Intent intentMap = new Intent(this, MapsActivity.class);
+                // 啟動地圖元件
+                startActivityForResult(intentMap, START_LOCATION);
                 break;
             case R.id.set_alarm:
                 break;
