@@ -8,6 +8,9 @@
     <uses-permission android:name=
         "android.permission.WRITE_EXTERNAL_STORAGE"/>
 
+    <!-- 使用錄音設備 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -65,6 +68,18 @@
                 <action android:name="net.macdidi.myandroidtutorial.CHOOSE_DEVICE" />
             </intent-filter>
         </activity>
+
+        <!-- 錄音元件 -->
+        <activity
+            android:name=".RecordActivity"
+            android:theme="@android:style/Theme.Dialog"
+            android:label="@string/title_record"/>
+
+        <!-- 播放元件 -->
+        <activity
+            android:name=".PlayActivity"
+            android:theme="@android:style/Theme.Dialog"
+            android:label="@string/title_play"/>
     </application>
 
 </manifest>

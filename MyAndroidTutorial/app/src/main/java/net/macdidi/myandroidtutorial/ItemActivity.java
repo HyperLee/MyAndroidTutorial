@@ -2,7 +2,9 @@ package net.macdidi.myandroidtutorial;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -40,13 +42,16 @@ public class ItemActivity extends AppCompatActivity {
 
     // 記事物件
     private Item item;
-
     // 檔案名稱
     private String fileName;
     // 照片
     private ImageView picture;
     // 寫入外部儲存設備授權請求代碼
     private static final int REQUEST_WRITE_EXTERNAL_STORAGE_PERMISSION = 100;
+    // 錄音設備授權請求代碼
+    private static final int REQUEST_RECORD_AUDIO_PERMISSION = 101;
+    // 錄音檔案名稱
+    private String recFileName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,13 +72,11 @@ public class ItemActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long arg3) {
 //                Toast.makeText(mContext, "你選的是"+lunch[position], Toast.LENGTH_SHORT).show();
-
             }
             @Override
             public void onNothingSelected(AdapterView<?> arg0) {
             }
         });
-
 
         // 取得Intent物件
         Intent intent = getIntent();
@@ -106,6 +109,8 @@ public class ItemActivity extends AppCompatActivity {
                     item.setFileName(fileName);
                     break;
                 case START_RECORD:
+                    // 設定錄音檔案名稱
+                    item.setRecFileName(recFileName);
                     break;
                 case START_LOCATION:
                     break;
@@ -200,6 +205,8 @@ public class ItemActivity extends AppCompatActivity {
                 requestStoragePermission();
                 break;
             case R.id.record_sound:
+                // 讀取與處理錄音設備授權請求
+                requestRecordPermission();
                 break;
             case R.id.set_location:
                 break;
@@ -310,11 +317,107 @@ public class ItemActivity extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
             }
         }
+
+        // 如果是錄音設備授權請求
+        else if (requestCode == REQUEST_RECORD_AUDIO_PERMISSION) {
+            // 如果在授權請求選擇「允許」
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // 錄音或播放
+                processRecord();
+            }
+            // 如果在授權請求選擇「拒絕」
+            else {
+                // 顯示沒有授權的訊息
+                Toast.makeText(this, R.string.record_audio_denied,
+                        Toast.LENGTH_SHORT).show();
+            }
+        }
+
         else {
             super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
 
 
+    // 錄音與播放
+    public void processRecord() {
+        final File recordFile = configRecFileName("R", ".mp3");
+
+        if (recordFile.exists()) {
+            AlertDialog.Builder d = new AlertDialog.Builder(this);
+
+            d.setTitle(R.string.title_record)
+                    .setCancelable(false);
+            d.setPositiveButton(R.string.record_play,
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            // 啟動播放元件
+                            Intent playIntent = new Intent(
+                                    ItemActivity.this, PlayActivity.class);
+                            playIntent.putExtra("fileName",
+                                    recordFile.getAbsolutePath());
+                            startActivity(playIntent);
+                        }
+                    });
+
+            d.setNeutralButton(R.string.record_new,
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent recordIntent = new Intent(ItemActivity.this, RecordActivity.class);
+                            recordIntent.putExtra("fileName", recordFile.getAbsolutePath());
+                            startActivityForResult(recordIntent, START_RECORD);
+                        }
+                    });
+
+            d.setNegativeButton(android.R.string.cancel, null);
+
+            d.show();
+        }
+        else {
+            Intent recordIntent = new Intent(this, RecordActivity.class);
+            recordIntent.putExtra("fileName", recordFile.getAbsolutePath());
+            startActivityForResult(recordIntent, START_RECORD);
+        }
+    }
+
+    private File configRecFileName(String prefix, String extension) {
+        // 如果記事資料已經有檔案名稱
+        if (item.getRecFileName() != null && item.getRecFileName().length() > 0) {
+            recFileName = item.getRecFileName();
+        }
+        // 產生檔案名稱
+        else {
+            recFileName = FileUtil.getUniqueFileName();
+        }
+
+        return new File(FileUtil.getExternalStorageDir(FileUtil.APP_DIR),
+                prefix + recFileName + extension);
+    }
+
+    // 讀取與處理錄音設備授權請求
+    private void requestRecordPermission() {
+        // 如果裝置版本是6.0（包含）以上
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            // 取得授權狀態，參數是請求授權的名稱
+            int hasPermission = checkSelfPermission(
+                    Manifest.permission.RECORD_AUDIO);
+
+            // 如果未授權
+            if (hasPermission != PackageManager.PERMISSION_GRANTED) {
+                // 請求授權
+                //     第一個參數是請求授權的名稱
+                //     第二個參數是請求代碼
+                requestPermissions(
+                        new String[]{Manifest.permission.RECORD_AUDIO},
+                        REQUEST_RECORD_AUDIO_PERMISSION);
+                return;
+            }
+        }
+
+        // 如果裝置版本是6.0以下，
+        // 或是裝置版本是6.0（包含）以上，使用者已經授權，
+        // 錄音或播放
+        processRecord();
+    }
 
 }

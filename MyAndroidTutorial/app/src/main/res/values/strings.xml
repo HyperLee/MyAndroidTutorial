@@ -39,5 +39,13 @@
         <item>60</item>
     </string-array>
 
+    <!-- sd card-->
     <string name="write_external_storage_denied">沒有寫入外部儲存設備授權</string>
+
+    <!-- record -->
+    <string name="title_record">語音備忘</string>
+    <string name="title_play">播放語音備忘</string>
+    <string name="record_play">播放</string>
+    <string name="record_new">重新錄製</string>
+    <string name="record_audio_denied">沒有錄音設備授權</string>
 </resources>
